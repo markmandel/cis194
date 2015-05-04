@@ -31,3 +31,7 @@ p = (3, 'x')
 -- Different from multiple arguments, I think(?)
 sumPair :: (Int, Int) -> Int
 sumPair (x,y) = x + y
+
+--multiple arguments
+threeAdd :: Int -> Int -> Int -> Int
+threeAdd x y z = x + y + z
