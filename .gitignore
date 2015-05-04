@@ -1,0 +1,21 @@
+.*
+!.gitignore
+*.iml
+
+
+# Created by .ignore support plugin (hsz.mobi)
+### Haskell template
+dist
+cabal-dev
+*.o
+*.hi
+*.chi
+*.chs.h
+*.dyn_o
+*.dyn_hi
+cabal.sandbox.config
+*.prof
+*.aux
+*.hp
+
+
