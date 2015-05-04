@@ -22,3 +22,12 @@ foo n
   
 isEven :: Integer -> Bool
 isEven n = mod n 2 == 0
+
+-- Tuples(?)/Pairs
+p :: (Int, Char)
+p = (3, 'x')
+
+-- takes a tuple/pair as an argument set. Interesting.
+-- Different from multiple arguments, I think(?)
+sumPair :: (Int, Int) -> Int
+sumPair (x,y) = x + y
