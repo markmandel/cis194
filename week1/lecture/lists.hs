@@ -19,3 +19,10 @@ intListLen :: [Integer] -> Integer
 intListLen [] = 0
 -- similar pattern matchin gto tuples. Interesting!
 intListLen (x:xs) = 1 + intListLen xs
+
+-- pattern matching can be nested, which is super neat
+sumEveryTwo :: [Integer] -> [Integer]
+sumEveryTwo [] = [] -- who cares
+sumEveryTwo (x:[]) = [x] -- ignore single elements
+sumEveryTwo (x:(y:rest)) = x + y : sumEveryTwo rest
+
