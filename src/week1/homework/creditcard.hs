@@ -1,15 +1,18 @@
-doubleSecond :: [Integer] -> [Integer]
-doubleSecond [] = []
-doubleSecond (x:[]) = [x]
-doubleSecond(x:(y:rest)) = x : (2 * y) : doubleSecond rest
+doubleEveryOtherForwards :: [Integer] -> [Integer]
+doubleEveryOtherForwards [] = []
+doubleEveryOtherForwards (x:[]) = [x]
+doubleEveryOtherForwards(x:(y:rest)) = x : (2 * y) : doubleEveryOtherForwards rest
 
-doubleSecondLast :: [Integer] -> [Integer]
-doubleSecondLast n = reverse (doubleSecond (reverse n))
+doubleEveryOther :: [Integer] -> [Integer]
+doubleEveryOther n = reverse (doubleEveryOtherForwards (reverse n))
 
-listDigits :: Integer -> [Integer]
-listDigits 0 = []
-listDigits n = rhsDigit n : listDigits (remainingDigits n (rhsDigit n))
+toDigitsRev :: Integer -> [Integer]
+toDigitsRev n
+    | n <= 0 = []
+    | otherwise = rhsDigit n : toDigitsRev (remainingDigits n (rhsDigit n))
 
+toDigits :: Integer -> [Integer]
+toDigits n = reverse (toDigitsRev n)
 
 -- remaining digits. Original, RHSDigit, returns the result
 remainingDigits :: Integer -> Integer -> Integer
@@ -17,7 +20,10 @@ remainingDigits original rhs = (original - rhs) `div` 10
 
 -- result is digit, remaining
 rhsDigit :: Integer -> Integer
-rhsDigit n 
-	| n < 10 = n
-	| otherwise = n - ((n `div` 10) * 10)
-	
+rhsDigit n
+    | n < 10 = n
+    | otherwise = n - ((n `div` 10) * 10)
+
+-- sum up all the digits 
+sumDigits :: [Integer] -> Integer
+sumDigits n = sum (concatMap toDigits n)
