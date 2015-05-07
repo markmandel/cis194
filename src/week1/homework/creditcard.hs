@@ -24,6 +24,10 @@ rhsDigit n
     | n < 10 = n
     | otherwise = n - ((n `div` 10) * 10)
 
--- sum up all the digits 
+-- sum up all the digits
 sumDigits :: [Integer] -> Integer
 sumDigits n = sum (concatMap toDigits n)
+
+-- validate the checksome
+validate :: Integer -> Bool
+validate n = mod (sumDigits (doubleEveryOther (toDigits n))) 10 == 0
