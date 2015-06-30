@@ -37,10 +37,29 @@ notEmpty [] = False
 doStuff1 :: [Int] -> Int
 doStuff1 [] = 0
 doStuff1 [_] = 0
-doStuff1 xs = head xs + (head (tail xs))
+doStuff1 xs = head xs + head (tail xs)
 
 --use pattern matching instead
 doStuff2 :: [Int] -> Int
 doStuff2 [] = 0
 doStuff2 [_] = 0
 doStuff2 (x:y:_) = x + y
+
+-- implement our own map function
+
+myMap :: (a -> b) -> [a] -> [b]
+myMap _ [] = []
+myMap f (x:xs) = f x : myMap f xs
+
+exampleList = [-1, 2, 6]
+
+myFilter :: (a -> Bool) -> [a] -> [a]
+myFilter _ [] = []
+myFilter p (x:xs)
+  | p x = x : myFilter p xs
+  | otherwise = myFilter p xs
+
+evenNumbers :: [Int] -> [Int]
+evenNumbers x = myFilter f x where
+                f :: Int -> Bool
+                f x = mod x 2 == 0
