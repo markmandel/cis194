@@ -15,7 +15,7 @@ frob str
     len = strLength str
 
 sumTo20 :: [Int] -> Int
-sumTo20 nums = go 0 nums -- the accumulator, starting at 0
+sumTo20 = go 0 -- the accumulator, starting at 0
   where go :: Int -> [Int] -> Int
         go acc [] = acc -- empty list, return the accumulated sum
         go acc (x:xs)
@@ -51,7 +51,7 @@ myMap :: (a -> b) -> [a] -> [b]
 myMap _ [] = []
 myMap f (x:xs) = f x : myMap f xs
 
-exampleList = [-1, 2, 6]
+exampleList = [-1, 2, 6]::[Int]
 
 myFilter :: (a -> Bool) -> [a] -> [a]
 myFilter _ [] = []
@@ -60,6 +60,6 @@ myFilter p (x:xs)
   | otherwise = myFilter p xs
 
 evenNumbers :: [Int] -> [Int]
-evenNumbers x = myFilter f x where
+evenNumbers = myFilter f where
                 f :: Int -> Bool
                 f x = mod x 2 == 0
