@@ -47,19 +47,20 @@ doStuff2 (x:y:_) = x + y
 
 -- implement our own map function
 
-myMap :: (a -> b) -> [a] -> [b]
-myMap _ [] = []
-myMap f (x:xs) = f x : myMap f xs
+map' :: (a -> b) -> [a] -> [b]
+map' _ [] = []
+map' f (x:xs) = f x : map' f xs
 
 exampleList = [-1, 2, 6]::[Int]
 
-myFilter :: (a -> Bool) -> [a] -> [a]
-myFilter _ [] = []
-myFilter p (x:xs)
-  | p x = x : myFilter p xs
-  | otherwise = myFilter p xs
+filter' :: (a -> Bool) -> [a] -> [a]
+filter' _ [] = []
+filter' p (x:xs)
+  | p x = x : filter' p xs
+  | otherwise = filter' p xs
 
 evenNumbers :: [Int] -> [Int]
-evenNumbers = myFilter f where
+evenNumbers = filter' f where
                 f :: Int -> Bool
                 f x = mod x 2 == 0
+
