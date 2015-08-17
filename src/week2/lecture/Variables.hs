@@ -68,3 +68,11 @@ evenNumbers = filter' f where
 length' :: [a] -> Int
 length' [] = 0
 length' (_:xs) = 1 + length' xs
+
+fold :: (a -> b -> b) -> [a] -> b -> b
+fold f [] z = z
+fold f (x:xs) z = f x (fold f xs z)
+
+length'' :: [a] -> Int
+length'' xs  = fold addOne xs 0 where
+                addOne _ x = 1 + x
