@@ -76,3 +76,14 @@ fold f (x:xs) z = f x (fold f xs z)
 length'' :: [a] -> Int
 length'' xs  = fold addOne xs 0 where
                 addOne _ x = 1 + x
+
+-- it's a comp operation. Although does RHS first?
+add1Mult4 :: [Int] -> [Int]
+add1Mult4 x = map ((*4) . (+1)) x
+
+-- $ is basically ->
+negateNumEvens1 :: [Int] -> Int
+negateNumEvens1 x = negate (length (filter even x))
+
+negateNumEvens2 :: [Int] -> Int
+negateNumEvens2 x = negate $ length $ filter even x
