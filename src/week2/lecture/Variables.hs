@@ -87,3 +87,15 @@ negateNumEvens1 x = negate (length (filter even x))
 
 negateNumEvens2 :: [Int] -> Int
 negateNumEvens2 x = negate $ length $ filter even x
+
+-- Anonymous functions
+duplicate1 :: [String] -> [String]
+duplicate1 = map dup
+               where dup x = x ++ x
+
+duplicate2 :: [String] -> [String]
+duplicate2 = map (\x -> x ++ x)
+
+--Currying
+mult' :: (Int,Int) -> Int
+mult' (x, y) = x * y
