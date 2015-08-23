@@ -31,11 +31,12 @@ exactMatches x y = length $ filter (\(a:b:_) -> a == b) $ transpose [x,y] where
 
 -- For each peg in xs, count how many times is occurs in ys
 countColors :: Code -> [Int]
-countColors = undefined
+countColors code = map f colors where
+                  f x = length $ filter (\y -> x == y) code
 
 -- Count number of matches between the actual code and the guess
 matches :: Code -> Code -> Int
-matches = undefined
+matches x y = length $ intersect x y
 
 -- Exercise 3 -----------------------------------------
 
