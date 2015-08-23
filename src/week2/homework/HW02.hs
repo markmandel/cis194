@@ -25,11 +25,7 @@ colors = [Red, Green, Blue, Yellow, Orange, Purple]
 
 -- Get the number of exact matches between the actual code and the guess
 exactMatches :: Code -> Code -> Int
---exactMatches = undefined
-exactMatches x y = length $ filter f $ transpose [x,y] where
-                    f [] = False
-                    f [_] = False
-                    f (a:b:_) = a == b
+exactMatches x y = length $ filter (\(a:b:_) -> a == b) $ transpose [x,y] where
 
 -- Exercise 2 -----------------------------------------
 
