@@ -1,6 +1,8 @@
 {-# OPTIONS_GHC -Wall #-}
 module HW02 where
 
+import Data.List
+
 -- Mastermind -----------------------------------------
 
 -- A peg can be one of six colors
@@ -23,7 +25,11 @@ colors = [Red, Green, Blue, Yellow, Orange, Purple]
 
 -- Get the number of exact matches between the actual code and the guess
 exactMatches :: Code -> Code -> Int
-exactMatches = undefined
+--exactMatches = undefined
+exactMatches x y = length $ filter f $ transpose [x,y] where
+                    f [] = False
+                    f [_] = False
+                    f (a:b:_) = a == b
 
 -- Exercise 2 -----------------------------------------
 
