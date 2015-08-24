@@ -2,6 +2,7 @@
 module HW02 where
 
 import Data.List
+{-# ANN module ("HLint: ignore Redundant bracket"::String) #-}
 
 -- Mastermind -----------------------------------------
 
@@ -25,7 +26,7 @@ colors = [Red, Green, Blue, Yellow, Orange, Purple]
 
 -- Get the number of exact matches between the actual code and the guess
 exactMatches :: Code -> Code -> Int
-exactMatches x y = length $ filter (\(a:b:_) -> a == b) $ transpose [x,y] where
+exactMatches x y = length $ filter (\(a:b:_) -> a == b) $ transpose [x,y]
 
 -- Exercise 2 -----------------------------------------
 
@@ -41,8 +42,10 @@ matches x y = length $ intersect x y
 -- Exercise 3 -----------------------------------------
 
 -- Construct a Move from a guess given the actual code
+-- first code is the secret, and the 2nd is the actual guess
 getMove :: Code -> Code -> Move
-getMove = undefined
+getMove secret guess = (Move guess matchCount ((matches secret guess) - matchCount)) where
+                        matchCount = exactMatches secret guess
 
 -- Exercise 4 -----------------------------------------
 
