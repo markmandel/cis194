@@ -44,13 +44,26 @@ matches x y = length $ intersect x y
 -- Construct a Move from a guess given the actual code
 -- first code is the secret, and the 2nd is the actual guess
 getMove :: Code -> Code -> Move
-getMove secret guess = (Move guess matchCount ((matches secret guess) - matchCount)) where
+getMove secret guess = (Move guess matchCount (matches secret guess - matchCount)) where
                         matchCount = exactMatches secret guess
 
 -- Exercise 4 -----------------------------------------
 
+{-
+if the guess
+inside the Move has the same number of exact and non-exact matches
+with the provided Code as it did with the actual secret, then the Code
+is consistent with the Move
+-}
+
+getConsistentMove :: Move -> Code -> Move
+getConsistentMove (Move guess _ _) code = getMove code guess
+
+isMovesConsistent :: Move -> Move -> Bool
+isMovesConsistent (Move _ exact1 regular1) (Move _ exact2 regular2) = (exact1 == exact2) && (regular1 == regular2)
+
 isConsistent :: Move -> Code -> Bool
-isConsistent = undefined
+isConsistent move code = isMovesConsistent move (getConsistentMove move code)
 
 -- Exercise 5 -----------------------------------------
 
