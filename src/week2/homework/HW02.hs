@@ -60,12 +60,12 @@ isConsistent :: Move -> Code -> Bool
 isConsistent move code = isMovesConsistent move (getConsistentMove move code)
     where
     isMovesConsistent (Move _ exact1 regular1) (Move _ exact2 regular2) = (exact1 == exact2) && (regular1 == regular2)
-    getConsistentMove (Move guess _ _) code = getMove code guess
+    getConsistentMove (Move guess _ _) ccode = getMove ccode guess
 
 -- Exercise 5 -----------------------------------------
 
 filterCodes :: Move -> [Code] -> [Code]
-filterCodes = undefined
+filterCodes move codes = filter (isConsistent move) codes
 
 -- Exercise 6 -----------------------------------------
 
