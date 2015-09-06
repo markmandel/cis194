@@ -56,14 +56,11 @@ with the provided Code as it did with the actual secret, then the Code
 is consistent with the Move
 -}
 
-getConsistentMove :: Move -> Code -> Move
-getConsistentMove (Move guess _ _) code = getMove code guess
-
-isMovesConsistent :: Move -> Move -> Bool
-isMovesConsistent (Move _ exact1 regular1) (Move _ exact2 regular2) = (exact1 == exact2) && (regular1 == regular2)
-
 isConsistent :: Move -> Code -> Bool
 isConsistent move code = isMovesConsistent move (getConsistentMove move code)
+    where
+    isMovesConsistent (Move _ exact1 regular1) (Move _ exact2 regular2) = (exact1 == exact2) && (regular1 == regular2)
+    getConsistentMove (Move guess _ _) code = getMove code guess
 
 -- Exercise 5 -----------------------------------------
 
