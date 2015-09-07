@@ -4,8 +4,8 @@
 
 module HW02Tests where
 
-import HW02
-import Testing
+import           HW02
+import           Testing
 
 
 -- Exercise 1 -----------------------------------------
@@ -51,7 +51,18 @@ ex4Tests = [ testF2 "isConsistent test" isConsistent
 -- Exercise 5 -----------------------------------------
 
 ex5Tests :: [Test]
-ex5Tests = []
+ex5Tests = [testF2 "filterCodes test" filterCodes
+            [
+                (Move [Red, Red, Blue, Green] 1 1, [[Red, Blue, Yellow, Purple]],
+                               [[Red, Blue, Yellow, Purple]])
+                ,
+                (Move [Red, Red, Blue, Green] 1 1, [[Red, Blue, Yellow, Purple],[Red, Red, Red, Red]],
+                                                   [[Red, Blue, Yellow, Purple]])
+
+
+            ]
+
+            ]
 
 -- Exercise 6 -----------------------------------------
 
