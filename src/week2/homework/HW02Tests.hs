@@ -58,11 +58,7 @@ ex5Tests = [testF2 "filterCodes test" filterCodes
                 ,
                 (Move [Red, Red, Blue, Green] 1 1, [[Red, Blue, Yellow, Purple],[Red, Red, Red, Red]],
                                                    [[Red, Blue, Yellow, Purple]])
-
-
-            ]
-
-            ]
+            ]]
 
 -- Exercise 6 -----------------------------------------
 
