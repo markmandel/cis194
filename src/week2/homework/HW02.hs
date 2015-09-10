@@ -80,9 +80,8 @@ generateAllCodes prefix len result
             f peg = generateAllCodes (peg : prefix) len result
 
 allCodes :: Int -> [Code]
-allCodes = undefined
-
-
+allCodes len = concatMap f colors where
+                f peg = generateAllCodes [peg] len []
 
 -- Exercise 7 -----------------------------------------
 
