@@ -73,15 +73,15 @@ filterCodes move = filter (isConsistent move)
 Generate all codes for n number of colours
 -}
 
-generateAllCodes :: Code -> Int -> [Code] -> [Code]
-generateAllCodes prefix len result
-    | length(prefix) >= len = prefix : result
+generateAllCodes :: Code -> Int -> [Code]
+generateAllCodes prefix len
+    | length(prefix) >= len = [prefix]
     | otherwise = concatMap f colors where
-            f peg = generateAllCodes (peg : prefix) len result
+            f peg = generateAllCodes (peg : prefix) len
 
 allCodes :: Int -> [Code]
 allCodes len = concatMap f colors where
-                f peg = generateAllCodes [peg] len []
+                f peg = generateAllCodes [peg] len
 
 -- Exercise 7 -----------------------------------------
 
