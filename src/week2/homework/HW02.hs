@@ -85,8 +85,25 @@ allCodes len = concatMap f colors where
 
 -- Exercise 7 -----------------------------------------
 
+-- getMove creates a move from a secret -> guess
+-- allCodes gives me allCodes
+-- filterCodes will filter inconsistent codes from a move
+
+-- keeps track of the remaining! consistent guesses
+
+solveHelper :: Code -> Code -> [Code] -> [Move] -> [Move]
+solveHelper secret guess combos result
+    | secret == guess = move : result
+    | otherwise = solveHelper secret newGuess newCombos (move : result)
+    where
+    move = getMove secret guess
+    (newGuess:newCombos) = filterCodes move combos
+
 solve :: Code -> [Move]
-solve = undefined
+solve secret = solveHelper secret guess combos []
+            where
+            guess = map (const Red) secret
+            combos = allCodes (length secret)
 
 -- Bonus ----------------------------------------------
 
