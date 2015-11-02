@@ -28,3 +28,29 @@ isSmall2 Shoe = True
 isSmall2 Cabbage = True
 isSmall2 SealingWax = True
 isSmall2 _ = False
+
+-- beyond enumerations
+data FailableDouble = Failure
+                    | OK Double
+    deriving Show
+
+ex01 = Failure
+ex02 = OK 0.34
+
+safeDiv :: Double -> Double -> FailableDouble
+safeDiv _ 0 = Failure
+safeDiv x y = OK (x / y)
+
+failureToZero :: FailableDouble -> Double
+failureToZero Failure = 0
+failureToZero (OK d) = d
+
+--- Person
+data Person = Person String Int Thing
+    deriving Show
+
+richard = Person "richard" 32 Ship
+stan = Person "Stan" 15 King
+
+getAge ::Person -> Int
+getAge (Person _ x _) = x
