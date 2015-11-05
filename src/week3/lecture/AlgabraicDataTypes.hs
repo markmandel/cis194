@@ -54,3 +54,11 @@ stan = Person "Stan" 15 King
 
 getAge ::Person -> Int
 getAge (Person _ x _) = x
+
+-- get the whole p with the pattern matched data
+baz :: Person -> String
+baz p@(Person n _ _) = "The name field of (" ++ show p ++ ") is " ++ n
+
+checkFav :: Person -> String
+checkFav (Person n _ Ship) =  n ++ ": Best thing ever"
+checkFav (Person n _ _) = n ++ ": Whatevs."
