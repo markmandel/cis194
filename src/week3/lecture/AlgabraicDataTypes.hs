@@ -62,3 +62,9 @@ baz p@(Person n _ _) = "The name field of (" ++ show p ++ ") is " ++ n
 checkFav :: Person -> String
 checkFav (Person n _ Ship) =  n ++ ": Best thing ever"
 checkFav (Person n _ _) = n ++ ": Whatevs."
+
+-- use case expressions
+failureToZero' :: FailableDouble -> Double
+failureToZero' x = case x of
+                    Failure -> 0
+                    OK d -> d
