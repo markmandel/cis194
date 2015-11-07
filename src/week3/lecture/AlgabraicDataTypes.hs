@@ -68,3 +68,15 @@ failureToZero' :: FailableDouble -> Double
 failureToZero' x = case x of
                     Failure -> 0
                     OK d -> d
+
+-- polymorphic data types
+
+example_a :: Maybe Int -> Int
+example_a (Just n) = n
+example_a Nothing = -1
+
+data LogMessage = LogMessage Int String
+
+example_b :: LogMessage -> Maybe String
+example_b (LogMessage severity string) | severity >= 50 = Just string
+example_b _ = Nothing
