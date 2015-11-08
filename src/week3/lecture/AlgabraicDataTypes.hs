@@ -80,3 +80,22 @@ data LogMessage = LogMessage Int String
 example_b :: LogMessage -> Maybe String
 example_b (LogMessage severity string) | severity >= 50 = Just string
 example_b _ = Nothing
+
+-- recursive data types
+
+data List t = Empty | Cons t (List t)
+    deriving Show
+
+lst1 :: List Int
+lst1 = Cons 1 (Cons 2 (Cons 3 Empty))
+
+intListProd :: List Int -> Int
+intListProd (Cons x l) = x * intListProd l
+intListProd Empty = 1
+
+-- binary tree
+
+data BinaryTree t = Nil
+        | Leaf t
+        | Node (BinaryTree t) t (BinaryTree t)
+    deriving Show
