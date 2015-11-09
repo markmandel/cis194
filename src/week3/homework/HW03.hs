@@ -35,7 +35,6 @@ type State = String -> Int
 
 extend :: State -> String -> Int -> State
 extend orig variable value = x where
-    x :: State
     x key
         | key == variable = value
         | otherwise = orig key
