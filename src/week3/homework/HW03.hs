@@ -13,8 +13,8 @@ data Bop =
   | Times    
   | Divide   
   | Gt
-  | Ge       
-  | Lt  
+  | Ge
+  | Lt
   | Le
   | Eql
   deriving (Show, Eq)
@@ -23,9 +23,9 @@ data Statement =
     Assign   String     Expression
   | Incr     String
   | If       Expression Statement  Statement
-  | While    Expression Statement       
+  | While    Expression Statement
   | For      Statement  Expression Statement Statement
-  | Sequence Statement  Statement        
+  | Sequence Statement  Statement
   | Skip
   deriving (Show, Eq)
 
@@ -34,10 +34,14 @@ type State = String -> Int
 -- Exercise 1 -----------------------------------------
 
 extend :: State -> String -> Int -> State
-extend = undefined
+extend orig variable value = x where
+    x :: State
+    x key
+        | key == variable = value
+        | otherwise = orig key
 
 empty :: State
-empty = undefined
+empty _ = 0
 
 -- Exercise 2 -----------------------------------------
 
